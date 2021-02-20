@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from PIL import Image
 import os
+import time
 
 def main():
     with open("addr.txt","w") as f:
@@ -9,6 +10,7 @@ def main():
             f.write(get_img_addr_from_page("https://www.shzx.org/a/143-5969-%d.html"%i,i+1))
             f.write("\n")
             f.flush()
+            time.sleep(0.2)
 
 def download_img(iurl,fname):
     print("Img dl from %s"%iurl)
@@ -31,7 +33,8 @@ def download_img(iurl,fname):
         print("Pic %s: Status %d."%(fname,resp.status_code))
         os.system("del %s"%fname)
     except Exception as excp:
-        raise excp
+        # raise excp
+        print(excp)
         # print("Errdl")
         # print(excp)
         # return
@@ -47,7 +50,8 @@ def get_img_from_page(pageurl,id):
         thediv=soup.find_all("div",class_="picture")[0]
         download_img(thediv.p.img["src"],"%d.webp"%id)
     except Exception as excp:
-        raise excp
+        # raise excp
+        print(excp)
     #     print("ERr")
     #     print(excp)
     #     return
@@ -62,7 +66,8 @@ def get_img_addr_from_page(pageurl,id):
         thediv=soup.find_all("div",class_="picture")[0]
         return thediv.p.img["src"]
     except Exception as excp:
-        raise excp
+        # raise excp
+        print(excp)
     #     print("ERr")
     #     print(excp)
     #     return
