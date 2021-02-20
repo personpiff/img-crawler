@@ -5,7 +5,7 @@ import os
 
 def main():
     with open("addr.txt","w") as f:
-        for i in range(8,170):
+        for i in range(0,170):
             f.write(get_img_addr_from_page("https://www.shzx.org/a/143-5969-%d.html"%i,i+1))
             f.write("\n")
             f.flush()
