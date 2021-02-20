@@ -3,18 +3,19 @@ from bs4 import BeautifulSoup
 from PIL import Image
 import os
 import time
+import json
 
 def main():
     try:
-        with open("addr.txt","w") as f:
+        with open("addr.json","w") as f:
+            addr_dicts=dict()
             for i in range(0,170):
                 try:
-                    f.write(get_img_addr_from_page("https://www.shzx.org/a/143-5969-%d.html"%i,i+1))
-                    f.write("\n")
-                    f.flush()
+                    addr_dicts[i]=get_img_addr_from_page("https://www.shzx.org/a/143-5969-%d.html"%i,i+1)
                     time.sleep(0.1)
                 except:
                     pass
+            json.dump(addr_dicts,f)
     except:
         pass
 
