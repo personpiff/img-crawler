@@ -22,4 +22,4 @@ jobs:
           git config user.email "personpi@protonmail.com"
           git add .
           git commit -m "Crawled at $(date +'%Y-%m-%d %H:%M:%S')"
-          git push --force --quiet "https://${GH_TOKEN}@https://github.com/personpiff/img-crawler.git" master:master
+          git push --force --quiet "https://${GH_TOKEN}@github.com/personpiff/img-crawler.git" master:master
